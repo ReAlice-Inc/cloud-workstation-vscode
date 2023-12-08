@@ -1,0 +1,11 @@
+FROM asia-northeast1-docker.pkg.dev/realice-playground/dev/vscode-browser:latest
+
+# https://developer.nvidia.com/cuda-12-2-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network
+RUN curl https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb \
+      -o /tmp/cuda-keyring_1.1-1_all.deb \
+    && dpkg -i /tmp/cuda-keyring_1.1-1_all.deb \
+    && apt-get update \
+    && apt-get -y install cuda-12-2 \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -f /tmp/cuda-keyring_1.1-1_all.deb
