@@ -22,4 +22,4 @@ RUN curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/*
 
-COPY *.sh /etc/workstation-startup.d
+COPY *.sh /etc/workstation-startup.d/
