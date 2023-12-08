@@ -1,0 +1,21 @@
+steps:
+  # https://cloud.google.com/build/docs/building/store-artifacts-in-artifact-registry#docker
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'build'
+      -  '-t'
+      - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:latest'
+      - '-f'
+      - 'Dockerfile'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'build'
+      -  '-t'
+      - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:gpu'
+      - '-f'
+      - 'Dockerfile.gpu'
+      - '.'
+images:
+  - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:latest'
+  - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:gpu'
