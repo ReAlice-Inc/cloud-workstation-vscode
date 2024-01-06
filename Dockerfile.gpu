@@ -9,6 +9,7 @@ RUN curl https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86
       cuda-12-2 \
       libportaudio2 \
       libasound-dev \
+      nvidia-container-runtime \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -f /tmp/cuda-keyring_1.1-1_all.deb
