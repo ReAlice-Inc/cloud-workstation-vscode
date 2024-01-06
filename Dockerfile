@@ -9,6 +9,7 @@ RUN apt-get update \
     htop \
     git-lfs \
     tig \
+    pv \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/*
 
