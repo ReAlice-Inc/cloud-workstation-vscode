@@ -5,7 +5,10 @@ RUN curl https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86
       -o /tmp/cuda-keyring_1.1-1_all.deb \
     && dpkg -i /tmp/cuda-keyring_1.1-1_all.deb \
     && apt-get update \
-    && apt-get -y install cuda-12-2 \
+    && apt-get install -y  --no-install-recommends \
+      cuda-12-2 \
+      libportaudio2 \
+      libasound-dev \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -f /tmp/cuda-keyring_1.1-1_all.deb
